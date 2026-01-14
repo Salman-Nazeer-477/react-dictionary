@@ -37,7 +37,7 @@ function App() {
         />
         <button>search</button>
       </form>
-      <div>History:{wordHistory.map(word => <p>{word}</p>)}</div>
+      <div><h3>History:</h3>{wordHistory.map(word => <p>{word}</p>)}</div>
       {!result.title && result.map(word => <Word word={word} />)}
       {result.title && <h3>No words found!</h3>}
     </>
