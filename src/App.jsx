@@ -1,39 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Word from './Word'
 
 function App() {
   const [text, setText] = useState("")
-  const [result, setResult] = useState("")
+  const [result, setResult] = useState([])
   const [wordObject, setWordObject] = useState({})
-  function submitText(e){
-    if(text === '') return
+  function submitText(e) {
     e.preventDefault()
-    // fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/hello`)
-          .then(response => response.json())
-          .then(data => setResult(data))
-          .catch(error => console.error('Error fetching data:', error))
+    if (text === '') return
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
+      .then(response => response.json())
+      .then(data => setResult(data))
+      .catch(error => console.error('Error fetching data:', error))
   }
   return (
     <>
       <form onSubmit={submitText}>
-        <input 
+        <input
           type={text}
           onChange={e => setText(e.target.value)}
         />
         <button>search</button>
       </form>
-      {result && <>
-      <div>{result[0].word}</div>
-      <div>{result[0].phonetic}</div>
-      <div>{result[0].meanings.map((meaning, index) => {
-        return <div key={index}>{meaning.definitions.definition}</div>
-      })}
-      </div>
-      </>
-      }
+      {!result.title && result.map(word => <Word word={word} />)}
+      {result.title && <h3>No words found!</h3>}
     </>
   )
 }
