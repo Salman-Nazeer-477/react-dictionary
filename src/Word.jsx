@@ -10,7 +10,7 @@ export default function Word({word}){
                         {meaning.definitions.map(definition => {
                             return <>
                                 <p>{definition.definition}</p>
-                                <p>example:{definition.example}</p>
+                                {definition.example && <p>example:{definition.example}</p>}
                             </>
                         })}
                     </>
