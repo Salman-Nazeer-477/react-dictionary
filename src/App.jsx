@@ -15,12 +15,18 @@ function App() {
     localStorage.setItem("wordhistory", JSON.stringify(wordHistory))
   }, [wordHistory])
 
-  function addWordHistory(word){
+  function addWordHistory(text){
     setWordHistory(wordList => {
       return [
         ...wordList,
-        word,
+        text,
       ]
+    })
+  }
+
+  function deleteWordHistory(text){
+    setWordHistory(wordList => {
+      return wordList.filter(word => word !== text)
     })
   }
 
@@ -44,7 +50,7 @@ function App() {
         />
         <button>search</button>
       </form>
-      <div><h3>History:</h3>{wordHistory.map(word => <p onClick={() => setText(word)}>{word}</p>)}</div>
+      <div><h3>History:</h3>{wordHistory.map(word => <p onClick={() => setText(word)}>{word}<b onClick={() => deleteWordHistory(word)}>X</b></p>)}</div>
       {!result.title && result.map(word => <Word word={word} />)}
       {result.title && <h3>No words found!</h3>}
     </>
