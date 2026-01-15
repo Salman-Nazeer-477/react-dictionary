@@ -15,6 +15,15 @@ function App() {
     localStorage.setItem("wordhistory", JSON.stringify(wordHistory))
   }, [wordHistory])
 
+  function addWordHistory(word){
+    setWordHistory(wordList => {
+      return [
+        ...wordList,
+        word,
+      ]
+    })
+  }
+
   function submitText(e) {
     e.preventDefault()
     if (text === '') return
@@ -22,12 +31,7 @@ function App() {
       .then(response => response.json())
       .then(data => setResult(data))
       .catch(error => console.error('Error fetching data:', error))
-    setWordHistory(wordList => {
-      return [
-        ...wordList,
-        text,
-      ]
-    })
+    addWordHistory(text)
 
   }
   return (
