@@ -14,30 +14,33 @@ function App() {
   useEffect(()=>{
     localStorage.setItem("wordhistory", JSON.stringify(wordHistory))
   }, [wordHistory])
+
   function submitText(e) {
     e.preventDefault()
     if (text === '') return
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
+      .then(response => response.json())
+      .then(data => setResult(data))
+      .catch(error => console.error('Error fetching data:', error))
     setWordHistory(wordList => {
       return [
         ...wordList,
         text,
       ]
     })
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
-      .then(response => response.json())
-      .then(data => setResult(data))
-      .catch(error => console.error('Error fetching data:', error))
+
   }
   return (
     <>
       <form onSubmit={submitText}>
         <input
-          type={text}
+          type="text"
+          value={text}
           onChange={e => setText(e.target.value)}
         />
         <button>search</button>
       </form>
-      <div><h3>History:</h3>{wordHistory.map(word => <p>{word}</p>)}</div>
+      <div><h3>History:</h3>{wordHistory.map(word => <p onClick={() => setText(word)}>{word}</p>)}</div>
       {!result.title && result.map(word => <Word word={word} />)}
       {result.title && <h3>No words found!</h3>}
     </>
