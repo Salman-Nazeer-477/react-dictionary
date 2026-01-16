@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Word from './Word'
+import WordItem from './WordItem.jsx'
 
 function App() {
   const [text, setText] = useState("")
@@ -51,7 +51,7 @@ function App() {
         <button>search</button>
       </form>
       <div><h3>History:</h3>{wordHistory.map(word => <p onClick={() => setText(word)}>{word}<b onClick={() => deleteWordHistory(word)}> X</b></p>)}</div>
-      {!result.title && result.map(word => <Word word={word} />)}
+      {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
       {result.title && <h3>No words found!</h3>}
     </>
   )
