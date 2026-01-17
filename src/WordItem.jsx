@@ -7,9 +7,8 @@ export default function WordItem({wordItem}){
         <ul className="parts-of-speech-list">
             {
                 wordItem.meanings.map((meaning, index) => {
-                    return <li><PartOfSpeech 
+                    return <li key={index}><PartOfSpeech 
                         meaning={meaning}
-                        key={index}
                     /></li>
                 })
             }

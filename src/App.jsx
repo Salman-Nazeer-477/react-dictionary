@@ -50,7 +50,7 @@ function App() {
         />
         <button>search</button>
       </form>
-      <div><h3>History:</h3>{wordHistory.map(word => <p onClick={() => setText(word)}>{word}<b onClick={() => deleteWordHistory(word)}> X</b></p>)}</div>
+      <div><h3>History:</h3>{wordHistory.map((word, index) => <p key={index} onClick={() => setText(word)}>{word}<b onClick={() => deleteWordHistory(word)}> X</b></p>)}</div>
       {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
       {result.title && <h3>No words found!</h3>}
     </>

@@ -5,9 +5,8 @@ export default function PartOfSpeech({meaning}){
         <ol className="word-defintion-list">
             {
                 meaning.definitions.map((defintionItem, index) => {
-                    return <li className="defintion-item">
+                    return <li key={index} className="defintion-item">
                         <WordDefintion
-                            key={index}
                             defintionItem={defintionItem}
                         />
                     </li>
