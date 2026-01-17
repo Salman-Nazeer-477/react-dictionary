@@ -4,10 +4,10 @@ export default function PartOfSpeech({meaning}){
         <h1 className="part-of-speech">{meaning.partOfSpeech}</h1>
         <ol className="word-defintion-list">
             {
-                meaning.definitions.map((defintionItem, index) => {
+                meaning.definitions.map((definitionItem, index) => {
                     return <li key={index} className="defintion-item">
                         <WordDefintion
-                            defintionItem={defintionItem}
+                            definitionItem={definitionItem}
                         />
                     </li>
                 })
