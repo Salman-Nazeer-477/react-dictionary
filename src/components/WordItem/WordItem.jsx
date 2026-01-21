@@ -1,4 +1,4 @@
-import PartOfSpeech from "./PartOfSpeech"
+import PartOfSpeech from "../PartOfSpeech/PartOfSpeech"
 export default function WordItem({wordItem}){
     return (<>
         <img src={null} alt="" className="audio-play" />
