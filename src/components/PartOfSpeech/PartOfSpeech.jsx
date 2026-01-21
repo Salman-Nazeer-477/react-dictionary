@@ -1,4 +1,4 @@
-import WordDefintion from "./WordDefintion"
+import WordDefintion from "../WordDefintion/WordDefintion"
 export default function PartOfSpeech({meaning}){
     return (<>
         <h1 className="part-of-speech">{meaning.partOfSpeech}</h1>

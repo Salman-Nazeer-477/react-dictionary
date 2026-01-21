@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import WordItem from './WordItem.jsx'
+import WordItem from './components/WordItem.jsx'
 
 function App() {
   const [text, setText] = useState("")
