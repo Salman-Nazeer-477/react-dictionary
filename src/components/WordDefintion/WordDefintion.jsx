@@ -1,3 +1,4 @@
+import './WordDefintion.css'
 export default function WordDefintion({ definitionItem }) {
     return (<>
         <p className="definition-text">{definitionItem.definition}</p>
