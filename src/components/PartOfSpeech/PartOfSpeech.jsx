@@ -2,7 +2,7 @@ import WordDefintion from "../WordDefintion/WordDefintion"
 import './PartOfSpeech.css'
 export default function PartOfSpeech({meaning}){
     return (<>
-        <h1 className="part-of-speech">{meaning.partOfSpeech}</h1>
+        <h2 className="part-of-speech">{meaning.partOfSpeech}</h2>
         <ol className="word-defintion-list">
             {
                 meaning.definitions.map((definitionItem, index) => {
