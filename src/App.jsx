@@ -11,11 +11,11 @@ function App() {
     return JSON.parse(localValue)
   })
 
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem("wordhistory", JSON.stringify(wordHistory))
   }, [wordHistory])
 
-  function addWordHistory(text){
+  function addWordHistory(text) {
     setWordHistory(wordList => {
       return [
         ...wordList,
@@ -24,7 +24,7 @@ function App() {
     })
   }
 
-  function deleteWordHistory(text){
+  function deleteWordHistory(text) {
     setWordHistory(wordList => {
       return wordList.filter(word => word !== text)
     })
@@ -51,8 +51,10 @@ function App() {
         <button>search</button>
       </form>
       <div>{(wordHistory.length !== 0) && <h3>History:</h3>}{wordHistory.map((word, index) => <p key={index} onClick={() => setText(word)}>{word}<button className="delete" onClick={() => deleteWordHistory(word)}> X</button></p>)}</div>
-      {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
-      {result.title && <h3>No words found!</h3>}
+      <div className="words-list">
+        {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
+        {result.title && <h3>No words found!</h3>}
+      </div>
     </div>
   )
 }
