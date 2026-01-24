@@ -49,9 +49,15 @@ function App() {
           value={text}
           onChange={e => setText(e.target.value)}
         />
-        <button>search</button>
+        <button className="search-button">search</button>
       </form>
-      <div>{(wordHistory.length !== 0) && <WordHistory setText={setText} wordHistory={wordHistory} deleteWordHistory={deleteWordHistory} />}</div>
+      <div className="history">{(wordHistory.length !== 0) && 
+        <WordHistory 
+          setText={setText} 
+          wordHistory={wordHistory} 
+          deleteWordHistory={deleteWordHistory} 
+        />
+      }</div>
       <div className="words-list">
         {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
         {result.title && <h3>No words found!</h3>}

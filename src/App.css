@@ -8,3 +8,15 @@
 form{
     margin-top: 5%;
 }
+
+.history{
+    width: 100%;
+}
+
+.search-button{
+    background-color: blue;
+    border-color: aliceblue;
+    border-radius: 20%;
+    color: white;
+
+}

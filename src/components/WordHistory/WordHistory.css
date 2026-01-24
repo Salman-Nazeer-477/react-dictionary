@@ -1,0 +1,20 @@
+.delete{
+    background-color: rgba(255, 0, 0, 0.564);
+    border-radius: 50%;
+    border: rgb(255, 0, 0);
+    width: 17px;
+    height: 17px;
+    font-size: smaller;
+    color: white;
+}
+
+.word-history-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: auto;
+}
+
+.word-history-item{
+    margin-left: 20px;
+}
