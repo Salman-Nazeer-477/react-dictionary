@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import WordItem from './components/WordItem/WordItem.jsx'
+import WordHistory from './components/WordHistory/WordHistory.jsx'
 
 function App() {
   const [text, setText] = useState("")
@@ -50,7 +51,7 @@ function App() {
         />
         <button>search</button>
       </form>
-      <div>{(wordHistory.length !== 0) && <h3>History:</h3>}{wordHistory.map((word, index) => <p key={index} onClick={() => setText(word)}>{word}<button className="delete" onClick={() => deleteWordHistory(word)}> X</button></p>)}</div>
+      <div>{(wordHistory.length !== 0) && <WordHistory setText={setText} wordHistory={wordHistory} deleteWordHistory={deleteWordHistory} />}</div>
       <div className="words-list">
         {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
         {result.title && <h3>No words found!</h3>}
