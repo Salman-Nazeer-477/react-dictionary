@@ -3,6 +3,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 90vw;
+    margin: auto;
 }
 
 form{
@@ -15,8 +17,12 @@ form{
 
 .search-button{
     background-color: blue;
-    border-color: aliceblue;
-    border-radius: 20%;
     color: white;
+    border: none;
+    height: 22px;
 
+}
+
+.words-list{
+    width: 100%;
 }

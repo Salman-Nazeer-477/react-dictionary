@@ -6,6 +6,7 @@
     height: 17px;
     font-size: smaller;
     color: white;
+    margin-left: 3px;
 }
 
 .word-history-list{
@@ -13,8 +14,11 @@
     flex-direction: row;
     justify-content: flex-start;
     gap: auto;
+    flex-wrap: wrap;
 }
 
 .word-history-item{
     margin-left: 20px;
+    outline: 1px solid blue;
+    padding: 10px;
 }
