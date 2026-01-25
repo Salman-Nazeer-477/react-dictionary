@@ -19,7 +19,7 @@ function App() {
   function addWordHistory(text) {
     setWordHistory(wordList => {
       return [
-        ...wordList,
+        ...wordList.filter(word => word !== text),
         text,
       ]
     })
