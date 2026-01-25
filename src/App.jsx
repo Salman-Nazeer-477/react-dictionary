@@ -8,6 +8,7 @@ function App() {
   const [text, setText] = useState("")
   const [result, setResult] = useState([])
   const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const [wordHistory, setWordHistory] = useState(() => {
     const localValue = localStorage.getItem("wordhistory")
     if (localValue === null) return []
@@ -36,14 +37,17 @@ function App() {
   function submitText(e) {
     e.preventDefault()
     if (text === '') return
+    setIsLoading(true)
     axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
       .then(response => {
         setResult(response.data)
         setError(null)
+        setIsLoading(false)
       })
       .catch(error => {
         setError(error)
         setResult([])
+        setIsLoading(false)
       })
     addWordHistory(text)
 
@@ -67,8 +71,9 @@ function App() {
       }</div>
       <div className="words-list">
         {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
-        {error && <p>{JSON.stringify(error.message)}</p>}
-        {result.title && <h3>No words found!</h3>}
+        {error && <h3>{JSON.stringify(error.message)}</h3>}
+        {error && error.status === 404 && <h3>Word Not Found!</h3>}
+        {isLoading && <h3>Loading...</h3>}
       </div>
     </div>
   )
