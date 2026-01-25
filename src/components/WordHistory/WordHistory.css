@@ -7,6 +7,9 @@
     font-size: smaller;
     color: white;
     margin-left: 3px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .word-history-list{
