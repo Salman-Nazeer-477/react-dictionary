@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css'
 import WordItem from './components/WordItem/WordItem.jsx'
 import WordHistory from './components/WordHistory/WordHistory.jsx'
@@ -34,9 +35,8 @@ function App() {
   function submitText(e) {
     e.preventDefault()
     if (text === '') return
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
-      .then(response => response.json())
-      .then(data => setResult(data))
+    axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
+      .then(response => setResult(response.data))
       .catch(error => console.error('Error fetching data:', error))
     addWordHistory(text)
 
