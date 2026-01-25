@@ -7,6 +7,7 @@ import WordHistory from './components/WordHistory/WordHistory.jsx'
 function App() {
   const [text, setText] = useState("")
   const [result, setResult] = useState([])
+  const [error, setError] = useState(null)
   const [wordHistory, setWordHistory] = useState(() => {
     const localValue = localStorage.getItem("wordhistory")
     if (localValue === null) return []
@@ -36,8 +37,14 @@ function App() {
     e.preventDefault()
     if (text === '') return
     axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
-      .then(response => setResult(response.data))
-      .catch(error => console.error('Error fetching data:', error))
+      .then(response => {
+        setResult(response.data)
+        setError(null)
+      })
+      .catch(error => {
+        setError(error)
+        setResult([])
+      })
     addWordHistory(text)
 
   }
@@ -60,6 +67,7 @@ function App() {
       }</div>
       <div className="words-list">
         {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
+        {error && <p>{JSON.stringify(error.message)}</p>}
         {result.title && <h3>No words found!</h3>}
       </div>
     </div>
