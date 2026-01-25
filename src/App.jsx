@@ -38,6 +38,8 @@ function App() {
     e.preventDefault()
     if (text === '') return
     setIsLoading(true)
+    setError(null)
+    setResult([])
     axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
       .then(response => {
         setResult(response.data)
