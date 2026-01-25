@@ -73,7 +73,7 @@ function App() {
       }</div>
       <div className="words-list">
         {!result.title && result.map((word, index) => <WordItem key={index} wordItem={word} />)}
-        {error && <h3>{JSON.stringify(error.message)}</h3>}
+        {error && <h3>{error.message}</h3>}
         {error && error.status === 404 && <h3>Word Not Found!</h3>}
         {isLoading && <h3>Loading...</h3>}
       </div>
